@@ -18,11 +18,11 @@ export function OrbitalLoader() {
           setShow(false);
           try {
             sessionStorage.setItem("techorbit_passport_intro", "true");
-          } catch {}
+          } catch { }
         }, 1100);
         return () => clearTimeout(timer);
       }
-    } catch {}
+    } catch { }
   }, []);
 
   if (!mounted || !show) return null;
