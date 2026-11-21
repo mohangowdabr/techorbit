@@ -18,7 +18,7 @@ import {
   Layers,
   ArrowUpRight
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 // Reusable Motion & Interactive Components
 import { StarField } from "@/components/motion/StarField";
@@ -96,7 +96,7 @@ export default function PassportPage() {
   };
 
   // Stagger animation container
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -107,7 +107,7 @@ export default function PassportPage() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };

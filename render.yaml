@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: techorbit
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: NEXT_PUBLIC_APP_NAME
+        value: TechOrbit
+      - key: NEXT_PUBLIC_SITE_URL
+        fromService:
+          type: web
+          name: techorbit
+          property: host
