@@ -4,14 +4,13 @@ services:
     runtime: node
     plan: free
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    startCommand: npm run start
     envVars:
       - key: NODE_VERSION
         value: 22.12.0
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
       - key: NEXT_PUBLIC_APP_NAME
         value: TechOrbit
-      - key: NEXT_PUBLIC_SITE_URL
-        fromService:
-          type: web
-          name: techorbit
-          property: host
