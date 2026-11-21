@@ -19,7 +19,6 @@ import {
   ArrowUpRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import confetti from "canvas-confetti";
 
 // Reusable Motion & Interactive Components
 import { StarField } from "@/components/motion/StarField";
@@ -56,6 +55,21 @@ export default function PassportPage() {
     return () => clearInterval(timer);
   }, [fullHeadline]);
 
+  const triggerConfetti = async () => {
+    try {
+      const confettiModule = (await import("canvas-confetti")).default;
+      confettiModule({
+        particleCount: 65,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#3b82f6", "#8b5cf6", "#10b981", "#fbbf24"],
+        disableForReducedMotion: true,
+      });
+    } catch {
+      // Safe fallback if canvas blocked
+    }
+  };
+
   const togglePrivacy = () => {
     const newLevel = isPublic ? "private" : "public";
     setIsPublic(!isPublic);
@@ -79,20 +93,6 @@ export default function PassportPage() {
     setToastMessage("Public Passport URL copied to clipboard!");
     setShowShareToast(true);
     setTimeout(() => setShowShareToast(false), 3000);
-  };
-
-  const triggerConfetti = () => {
-    try {
-      confetti({
-        particleCount: 65,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ["#3b82f6", "#8b5cf6", "#10b981", "#fbbf24"],
-        disableForReducedMotion: true,
-      });
-    } catch {
-      // Fallback if canvas blocked
-    }
   };
 
   // Stagger animation container
@@ -229,7 +229,7 @@ export default function PassportPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.05 * index }}
                       >
-                        {char}
+                        {char === " " ? "\u00A0" : char}
                       </motion.span>
                     ))}
                   </h1>
