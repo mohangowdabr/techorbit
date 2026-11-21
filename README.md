@@ -91,3 +91,27 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 - [Security](file:///c:/Users/mohan/Downloads/Techorbit/docs/SECURITY.md)
 - [Development Status](file:///c:/Users/mohan/Downloads/Techorbit/docs/DEVELOPMENT_STATUS.md)
 - [Testing & Verification](file:///c:/Users/mohan/Downloads/Techorbit/docs/TESTING.md)
+
+---
+
+## 🪐 Orbital Motion Design System (`components/motion/`)
+
+The Developer Passport (`/passport`) features a living orbital design system centered around the brand concept *"Every Opportunity. One Ecosystem."* The developer is the central sun, while skills, achievements, and attestations orbit around them.
+
+### Reusable Motion Components
+- **`StarField`** (`components/motion/StarField.tsx`): High-performance canvas-based particle field with subtle mouse parallax and twinkle effects. Automatically respects `prefers-reduced-motion` and scales down on touch devices.
+- **`TiltCard`** (`components/motion/TiltCard.tsx`): 3D perspective spring tilt physics card (`rotateX`, `rotateY`) with a cursor-following spotlight gradient overlay.
+- **`MagneticLink`** (`components/motion/MagneticLink.tsx`): Magnetic pull interaction where link icons gently follow cursor proximity, paired with an animated gradient underline draw.
+- **`ScrambleText`** (`components/motion/ScrambleText.tsx`): Cryptographic verification hash decryptor that scrambles on hover, resolves into the authentic hash, and copies to clipboard on click.
+- **`OrbitSkills`** (`components/motion/OrbitSkills.tsx`): Interactive dual-mode component with view toggle:
+  - *Matrix View*: Floating bobbing skill chips with animated fill meters and dimmed focus states.
+  - *Orbit View*: Skills placed on concentric celestial rings (Inner = Expert, Mid = Advanced, Outer = Intermediate) rotating around the developer sun core.
+- **`AnimatedCounter`** (`components/motion/AnimatedCounter.tsx`): Smooth numerical stat reveal (`3 Confirmed`, `8 Evaluated`).
+- **`ScrollProgressBar`** (`components/motion/ScrollProgressBar.tsx`): Top gradient progress line tied to window scroll.
+- **`CustomCursor`** (`components/motion/CustomCursor.tsx`): Smooth trailing glow halo and precision dot that scales up over buttons, links, and inputs. Suppressed on mobile/touch pointers.
+- **`OrbitalLoader`** (`components/motion/OrbitalLoader.tsx`): Celestial startup sequence with rotating orbital rings and central spark.
+- **`ShareToast`** (`components/motion/ShareToast.tsx`): Confetti-accompanied bottom toast notification triggered on link sharing.
+
+### Motion Toggles & Accessibility
+- **Reduced Motion**: All animations automatically query `window.matchMedia('(prefers-reduced-motion: reduce)')`. When active, particle fields, tilts, and complex rotational transforms are bypassed.
+- **Touch & Mobile Optimization**: Heavy cursor tracking and tilt physics are automatically disabled when `pointer: coarse` is detected.
